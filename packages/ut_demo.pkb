@@ -3,11 +3,11 @@ create or replace package body test_hhh
 is 
 
 
-procedure blerg
+procedure demo
 is
 begin
     ut.expect('hayden').to_equal('haydenhh');
-end blerg;
+end demo;
 
 procedure test_login
 is 
