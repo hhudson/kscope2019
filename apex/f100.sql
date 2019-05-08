@@ -15,7 +15,7 @@ begin
 wwv_flow_api.import_begin (
  p_version_yyyy_mm_dd=>'2018.04.04'
 ,p_release=>'18.1.0.00.45'
-,p_default_workspace_id=>1450755098074901
+,p_default_workspace_id=>1450652705250067
 ,p_default_application_id=>100
 ,p_default_owner=>'KSCOPE2019'
 );
@@ -27,7 +27,7 @@ prompt APPLICATION 100 - demo
 -- Application Export:
 --   Application:     100
 --   Name:            demo
---   Date and Time:   14:42 Wednesday March 27, 2019
+--   Date and Time:   03:37 Wednesday May 8, 2019
 --   Exported By:     HAYDEN
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -36,11 +36,11 @@ prompt APPLICATION 100 - demo
 --
 
 -- Application Statistics:
---   Pages:                      3
---     Items:                    3
---     Processes:                4
---     Regions:                  3
---     Buttons:                  1
+--   Pages:                      4
+--     Items:                    5
+--     Processes:                5
+--     Regions:                  4
+--     Buttons:                  2
 --   Shared Components:
 --     Logic:
 --     Navigation:
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'demo'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20190327144231'
+,p_last_upd_yyyymmddhh24miss=>'20190508033323'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -9657,7 +9657,7 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20190327144021'
+,p_last_upd_yyyymmddhh24miss=>'20190508033323'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1586707939092155)
@@ -9672,6 +9672,99 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 ,p_attribute_03=>'Y'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(1601598626035803)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(1586707939092155)
+,p_button_name=>'SUBMIT'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(1553751757092022)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Submit'
+,p_button_position=>'BELOW_BOX'
+,p_button_css_classes=>'demo'
+);
+wwv_flow_api.create_page_branch(
+ p_id=>wwv_flow_api.id(1601905884035807)
+,p_branch_name=>'page 2'
+,p_branch_action=>'f?p=&APP_ID.:2:&SESSION.::&DEBUG.:RP,2:P2_COMMENT:&P1_COMMENT.&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_sequence=>10
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(1601458703035802)
+,p_name=>'P1_COMMENT'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_api.id(1586707939092155)
+,p_prompt=>'Comment'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cHeight=>5
+,p_field_template=>wwv_flow_api.id(1553212402092020)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_process(
+ p_id=>wwv_flow_api.id(1601674711035804)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'SUBMIT'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'BEGIN',
+'NULL;',
+'END;'))
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'Comment submitted!'
+);
+end;
+/
+prompt --application/pages/page_00002
+begin
+wwv_flow_api.create_page(
+ p_id=>2
+,p_user_interface_id=>wwv_flow_api.id(1575687754092066)
+,p_name=>'Comment'
+,p_step_title=>'Comment'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20190508032817'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(1601752471035805)
+,p_plug_name=>'Your Comment'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(1506381614091874)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(1601889207035806)
+,p_name=>'P2_COMMENT'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_api.id(1601752471035805)
+,p_prompt=>'Comment'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cHeight=>5
+,p_field_template=>wwv_flow_api.id(1553212402092020)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
 );
 end;
 /
