@@ -1,12 +1,11 @@
-
-create or replace package body test_hhh
+create or replace package body ut_demo
 is 
 
 
 procedure demo
 is
 begin
-    ut.expect('hayden').to_equal('haydenhh');
+    ut.expect('Seattle').to_equal('Seattle');
 end demo;
 
 procedure test_login
@@ -18,5 +17,5 @@ begin
   ut.expect( l_success ).to_be_true();
 end test_login;
 
-end test_hhh;
+end ut_demo;
 /

@@ -1,12 +1,11 @@
-
-create or replace package test_hhh as
-  --%suite(Between string function)
+create or replace package ut_demo as
+  --%suite(Kscope demo utplsql procedures)
   
-  --%test(Random intentional failure)
+  --%test(Demonstrate random intentional failure)
   procedure demo;
 
-  --%test(tests the login function)
+  --%test(Test the login function)
   procedure test_login;
 
-end test_hhh;
+end ut_demo;
 /
