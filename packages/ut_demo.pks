@@ -1,7 +1,7 @@
 create or replace package ut_demo as
-  --%suite(Kscope demo utplsql procedures)
+  --%suite(Kscope 2019 demo utplsql procedures)
   
-  --%test(Demonstrate random intentional failure)
+  --%test(Demonstrate nothing in particular)
   procedure demo;
 
   --%test(Test the login function)

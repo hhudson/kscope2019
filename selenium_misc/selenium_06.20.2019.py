@@ -21,13 +21,13 @@ class Hhh041219(unittest.TestCase):
    def test_hhh041219(self):
        driver = self.driver
        driver.get(self.base_url)
-       driver.find_element_by_name("P9999_USERNAME").send_keys("Hayden")
+       driver.find_element_by_name("P9999_USERNAME2").send_keys("Hayden")
        driver.find_element_by_name("P9999_PASSWORD").send_keys("Oradoc_db1")
        driver.find_element_by_class_name('t-Button').click()
        #time.sleep(3)
        driver.find_element_by_name("P1_COMMENT").send_keys("Hello")
        driver.find_element_by_class_name('demo').click()
-       time.sleep(5)
+       time.sleep(3)
 
 
    def is_element_present(self, how, what):
