@@ -6,7 +6,7 @@ is
 procedure demo
 is
 begin
-    ut.expect('Seattle').to_equal('Seattle');
+    ut.expect('Seattle').to_equal('Boston');
 end demo;
 
 
